@@ -1,0 +1,33 @@
+# server 설정
+server:
+  port: 8001
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# Spring 설정
+spring:
+
+  # 자동 재실행
+  main:
+    allow-bean-definition-overriding: true
+
+  # MySQL 설정
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth?serverTimezone=UTC&characterEncoding=UTF-8
+    username: auth
+    password: 150321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # jpa
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: com.board.www.config.CustomNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+

@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	testImplementation 'org.hamcrest:hamcrest:2.2'
+
+	// 웹서버 개발을 위한
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// html 변깅시 자동 재부팅
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	// 테스트 라이브러리
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// 롬북 라이브러리
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	// JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
