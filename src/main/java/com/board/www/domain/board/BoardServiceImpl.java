@@ -1,28 +1,42 @@
 package com.board.www.domain.board;
 
+import com.board.www.comm.pageing.Criteria;
 import com.board.www.domain.board.entity.Board;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
 
     // 게시글 리스트 조회
     @Override
     @Transactional(readOnly = true)
-    public ResponseEntity<List<Board>> findByIdAll() {
-        // 모든 게시글을 조회
-        List<Board> boards = boardRepository.findAll();
-        return ResponseEntity.ok().body(boards);
+    public Map<String, Object> findByIdAll(Criteria cri) {
+        Map<String, Object> map = new HashMap<>();
+
+    /*    // 페이징 처리를 위해 전체 게시글 수 조회
+        int total = boardRepository.countByCriteria(cri); // 가정: boardRepository에 해당 메서드 구현이 필요
+
+        // 조건에 맞는 게시글 목록 조회
+        List<Board> boards = boardRepository.findAllByCriteria(cri); // 가정: boardRepository에 해당 메서드 구현이 필요
+
+        // 페이징 정보 생성
+        PageMakerDTO pageMake = new PageMakerDTO(total, cri);
+        map.put("pageMake", pageMake);
+        map.put("list", boards);
+*/
+        return map;
     }
+
 
     // 게시글 조회
     @Override

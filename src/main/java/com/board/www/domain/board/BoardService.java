@@ -1,9 +1,10 @@
 package com.board.www.domain.board;
 
+import com.board.www.comm.pageing.Criteria;
 import com.board.www.domain.board.entity.Board;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.util.Map;
 
 public interface BoardService {
 
@@ -15,7 +16,7 @@ public interface BoardService {
      * 데이터베이스 접근 오류 또는 기타 예외가 발생할 수 있으며, 이 경우
      * 적절한 예외 처리와 함께 에러 메시지를 담은 ResponseEntity가 반환될 수 있습니다.
      */
-    ResponseEntity<List<Board>> findByIdAll();
+    Map<String, Object>findByIdAll(Criteria cri);
 
     /**
      * 특정 ID를 가진 게시판 항목을 찾아 클라이언트에게 반환합니다.
