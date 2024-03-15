@@ -1,11 +1,8 @@
 package com.board.www.domain.board;
 
 import com.board.www.comm.pageing.Criteria;
-import com.board.www.comm.pageing.PageMakerDTO;
 import com.board.www.domain.board.entity.Board;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,36 +19,43 @@ public class BoardController {
     @GetMapping("/board")
     public String getBoardList(Criteria cri, Model model) {
 
-        Map<String, Object> map = boardService.findByIdAll(cri.getPageNumber(), cri.getPageSize());
+        Map<String, Object> map = boardService.findByIdAll(cri);
 
-        model.addAttribute("showList", map.get("list"));
-        model.addAttribute("pageMake", map.get("pageMake"));
+        model.addAttribute("list", map.get("list"));
+        model.addAttribute("pageMaker", map.get("pageMaker"));
 
         return "";
     }
 
     // 게시글 조회
     @GetMapping("/board/{id}")
-    public ResponseEntity<Board> getBoard(@PathVariable("id") Long id) {
-        return boardService.findById(id);
+    public String getBoard(@PathVariable("id") Long id) {
+        boardService.findById(id);
+        return "";
     }
 
     // 게시글 등록
     @PostMapping("/board")
-    public ResponseEntity<Boolean> createBoard(@RequestBody Board board) {
-        return boardService.createBoard(board);
+    public String createBoard(@RequestBody Board board) {
+
+        boardService.createBoard(board);
+        return "";
     }
 
     // 게시글 수정
     @PatchMapping("/board")
-    public ResponseEntity<Boolean> modifyBoard(@RequestBody Board board) {
-        return boardService.modifyBoard(board);
+    public String modifyBoard(@RequestBody Board board) {
+
+        boardService.modifyBoard(board);
+        return "";
     }
 
     // 게시글 삭제
     @DeleteMapping("/board")
-    public ResponseEntity<Boolean> deleteBoard(@RequestBody Board board) {
-        return boardService.deleteBoard(board);
+    public String deleteBoard(@RequestBody Board board) {
+
+        boardService.deleteBoard(board);
+        return "";
     }
 
 }

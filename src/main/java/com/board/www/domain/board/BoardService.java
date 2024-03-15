@@ -2,7 +2,6 @@ package com.board.www.domain.board;
 
 import com.board.www.comm.pageing.Criteria;
 import com.board.www.domain.board.entity.Board;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Map;
 
@@ -30,7 +29,7 @@ public interface BoardService {
      * @param id 찾고자 하는 게시판 항목의 ID
      * @return 특정 ID를 가진 게시판 항목, 또는 에러 메시지를 포함한 ResponseEntity 객체
      */
-    ResponseEntity<Board> findById(Long id);
+    Board findById(Long id);
 
     /**
      * 새로운 게시판 항목을 생성합니다.
@@ -43,7 +42,7 @@ public interface BoardService {
      * @param board 클라이언트로부터 받은 게시판 항목 정보
      * @return 생성 성공 여부를 나타내는 Boolean 값을 포함한 ResponseEntity 객체
      */
-    ResponseEntity<Boolean> createBoard(Board board);
+    boolean createBoard(Board board);
 
     /**
      * 기존 게시판 항목을 수정합니다.
@@ -56,7 +55,7 @@ public interface BoardService {
      * @param board 클라이언트로부터 받은 수정된 게시판 항목 정보
      * @return 수정 성공 여부를 나타내는 Boolean 값을 포함한 ResponseEntity 객체
      */
-    ResponseEntity<Boolean> modifyBoard(Board board);
+    boolean modifyBoard(Board board);
 
     /**
      * 특정 게시판 항목을 삭제합니다.
@@ -69,6 +68,6 @@ public interface BoardService {
      * @param board 클라이언트로부터 받은 삭제할 게시판 항목 정보
      * @return 삭제 성공 여부를 나타내는 Boolean 값을 포함한 ResponseEntity 객체
      */
-    ResponseEntity<Boolean> deleteBoard(Board board);
+    boolean deleteBoard(Board board);
 
 }

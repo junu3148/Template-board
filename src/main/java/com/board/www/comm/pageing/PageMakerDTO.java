@@ -1,5 +1,10 @@
 package com.board.www.comm.pageing;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class PageMakerDTO {
     private int startPage;
     private int endPage;
@@ -31,54 +36,6 @@ public class PageMakerDTO {
 
         /* 마지막 페이지(endPage) 값이 전체 마지막 페이지(realEnd)보다 작은 경우 true */
         this.next = this.endPage < realEnd;
-    }
-
-    public int getStartPage() {
-        return startPage;
-    }
-
-    public void setStartPage(int startPage) {
-        this.startPage = startPage;
-    }
-
-    public int getEndPage() {
-        return endPage;
-    }
-
-    public void setEndPage(int endPage) {
-        this.endPage = endPage;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public boolean isPrev() {
-        return prev;
-    }
-
-    public void setPrev(boolean prev) {
-        this.prev = prev;
-    }
-
-    public boolean isNext() {
-        return next;
-    }
-
-    public void setNext(boolean next) {
-        this.next = next;
-    }
-
-    public Criteria getCri() {
-        return cri;
-    }
-
-    public void setCri(Criteria cri) {
-        this.cri = cri;
     }
 
     @Override
