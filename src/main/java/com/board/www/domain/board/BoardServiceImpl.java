@@ -3,6 +3,7 @@ package com.board.www.domain.board;
 import com.board.www.comm.pageing.Criteria;
 import com.board.www.comm.pageing.PageMakerDTO;
 import com.board.www.domain.board.entity.Board;
+import com.board.www.eu.BoardStatus;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,6 @@ import java.util.Optional;
 public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
-    private static final String STATUS = "ACTIVE";
 
     // 게시글 리스트 조회
     @Override
@@ -29,13 +29,13 @@ public class BoardServiceImpl implements BoardService {
         Map<String, Object> map = new HashMap<>();
 
         Pageable pageable = cri.toPageable(); // Criteria 객체에서 Pageable 객체 생성
-        Page<Board> page; // 조회 결과를 담을 Page 객체 초기화
+        Page<Board> page=null; // 조회 결과를 담을 Page 객체 초기화
 
         // 페이징 처리를 위해 조건에 맞는 게시글 목록 조회
         if (cri.getKeyword() == null || cri.getKeyword().isEmpty()) {
-            page = boardRepository.findByBoardStatus(STATUS, pageable);
+            page = boardRepository.findByBoardStatus(BoardStatus.ACTIVE, pageable);
         } else {
-            page = boardRepository.findByKeywordAndBoardStatus(cri.getKeyword(), STATUS, pageable);
+            page = boardRepository.findByKeywordAndBoardStatus(cri.getKeyword(), BoardStatus.ACTIVE, pageable);
         }
 
         // 조회된 결과에서 총 게시물 수 및 게시물 목록 추출

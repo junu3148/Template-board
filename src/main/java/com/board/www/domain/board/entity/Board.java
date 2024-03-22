@@ -34,7 +34,7 @@ public class Board{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private BoardStatus boardStatus = BoardStatus.ACTIVE;
+    private com.board.www.eu.BoardStatus boardStatus = com.board.www.eu.BoardStatus.ACTIVE;
 
 
 }
