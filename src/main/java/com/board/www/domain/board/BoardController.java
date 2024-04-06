@@ -20,8 +20,6 @@ public class BoardController {
     public String getBoardList(Criteria cri, Model model) {
         System.out.println(cri.getKeyword());
         Map<String, Object> map = boardService.findByIdAll(cri);
-        System.out.println(map.get("list"));
-        System.out.println(map.get("pageMaker"));
         model.addAttribute("list", map.get("list"));
         model.addAttribute("pageMaker", map.get("pageMaker"));
 
@@ -31,7 +29,8 @@ public class BoardController {
     // 게시글 조회
     @GetMapping("/board/{id}")
     public String getBoard(@PathVariable("id") Long id) {
-        boardService.findById(id);
+        Board board =  boardService.findById(id);
+        System.out.println(board);
         return "";
     }
 

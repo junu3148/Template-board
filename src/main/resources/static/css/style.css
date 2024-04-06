@@ -132,4 +132,14 @@ html .ui-button.ui-state-disabled:active { border: 0px solid #c5c5c5; background
 
  }
 
+table {
+    width: 100%; /* 테이블 전체 너비를 부모 요소에 맞춤 */
+    table-layout: fixed; /* 열 너비 고정 */
+}
 
+th, td {
+    width: 25%; /* 각 열의 너비를 테이블 너비의 25%로 설정 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 생략 기호 사용 */
+    white-space: nowrap; /* 내용을 한 줄에 표시 */
+    overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+}
